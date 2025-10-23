@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mohammed Abdulaziz Ikram — Personal Website</title>
+  <meta name="description" content="Personal site of Mohammed Abdulaziz Ikram — PhD in Computer Science. Assistant Professor at Umm Al‑Qura University. Research in AI, Data Science, Cloud, IoT, ML." />
+  <meta property="og:title" content="Mohammed Abdulaziz Ikram — Personal Website" />
+  <meta property="og:description" content="PhD in Computer Science. Assistant Professor at Umm Al‑Qura University. Research in AI, Data Science, Cloud, IoT, ML." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0e7490" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #10162a;
+      --muted: #a7b3c6;
+      --text: #e6eefc;
+      --accent: #22d3ee; /* cyan-400 */
+      --accent-2: #60a5fa; /* blue-400 */
+      --ring: rgba(34, 211, 238, .35);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --muted: #475569;
+        --text: #0f172a;
+        --accent: #0891b2;
+        --accent-2: #2563eb;
+        --ring: rgba(59, 130, 246, .25);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text); background: radial-gradient(1200px 800px at 10% -10%, rgba(34,211,238,.15), transparent 40%),
+               radial-gradient(1000px 700px at 90% -20%, rgba(96,165,250,.12), transparent 35%), var(--bg);
+      line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(1100px, 92vw); margin: 0 auto; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; backdrop-filter: saturate(180%) blur(8px);
+      background: color-mix(in lab, var(--bg) 82%, transparent);
+      border-bottom: 1px solid color-mix(in lab, var(--card), transparent 60%);
+      z-index: 20;
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: .9rem 0; gap: .5rem; }
+    .brand { font-weight: 800; letter-spacing: .2px; font-size: 1.05rem; }
+    .brand span { color: var(--accent-2); }
+    nav a { margin-left: 1rem; font-weight: 600; color: var(--text); opacity: .85; }
+    nav a:hover { opacity: 1; }
+
+    /* Hero */
+    .hero { padding: 3.2rem 0 2.4rem; display: grid; grid-template-columns: 1fr; gap: 1.8rem; }
+    .hero h1 { font-size: clamp(1.8rem, 4.5vw, 3rem); line-height: 1.12; margin: 0; }
+    .subtitle { font-size: clamp(1rem, 2.4vw, 1.2rem); color: var(--muted); }
+    .cta { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1rem; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid color-mix(in lab, var(--accent-2), transparent 65%);
+           background: linear-gradient(180deg, color-mix(in lab, var(--accent-2), transparent 88%), transparent);
+           color: var(--text); padding: .6rem .9rem; border-radius: .75rem; font-weight: 700; }
+    .btn.secondary { background: transparent; border: 1px solid color-mix(in lab, var(--text), transparent 75%); font-weight: 600; }
+
+    /* Sections */
+    section { padding: 2rem 0; }
+    h2 { font-size: clamp(1.2rem, 2.6vw, 1.6rem); margin: 0 0 .8rem; letter-spacing: .3px; }
+
+    .grid { display: grid; gap: 1rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .card { background: var(--card); border: 1px solid color-mix(in lab, var(--text), transparent 90%); border-radius: 16px; padding: 1rem 1.1rem; box-shadow: 0 1px 0 color-mix(in lab, var(--text), transparent 90%);
+            transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-1px); box-shadow: 0 6px 28px -16px var(--ring); }
+
+    .item { display: grid; gap: .25rem; }
+    .item .meta { color: var(--muted); font-size: .92rem; }
+    .item .role { font-weight: 700; }
+
+    ul.clean { list-style: none; padding: 0; margin: .25rem 0 0; }
+    ul.clean li { margin: .35rem 0; }
+
+    .two-col { columns: 2 340px; column-gap: 1.2rem; }
+    .pub { break-inside: avoid; background: var(--card); border-radius: 14px; padding: .9rem 1rem; margin: .6rem 0; border: 1px solid color-mix(in lab, var(--text), transparent 90%); }
+    .pub b { color: var(--text); }
+    .small { font-size: .94rem; color: var(--muted); }
+
+    footer { border-top: 1px solid color-mix(in lab, var(--text), transparent 85%); padding: 2rem 0; color: var(--muted); }
+
+    /* Utilities */
+    .kicker { color: var(--accent); font-weight: 800; letter-spacing: .4px; text-transform: uppercase; font-size: .75rem; }
+    .badge { display: inline-block; padding: .2rem .5rem; border: 1px solid color-mix(in lab, var(--text), transparent 80%); border-radius: 999px; margin-right: .35rem; font-size: .78rem; color: var(--muted); }
+    .list-inline { display: flex; flex-wrap: wrap; gap: .35rem .5rem; }
+    .contact { display: grid; gap: .4rem; }
+    .mono { font-family: ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  </style>
+  <!-- Schema.org Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohammed Abdulaziz Ikram",
+    "jobTitle": "Assistant Professor; PhD in Computer Science",
+    "affiliation": {"@type":"CollegeOrUniversity","name":"Umm Al-Qura University"},
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "MDSA6710, 6710, Mohammed Bin Jobire Street, Al Shawqiea district, 2443",
+      "addressLocality": "Makkah",
+      "postalCode": "24351",
+      "addressCountry": "SA"
+    },
+    "email": "mailto:maikram@uqu.edu.sa",
+    "telephone": "+966561052166",
+    "url": "https://uqu.edu.sa/Profile/maikram",
+    "sameAs": [
+      "https://www.linkedin.com/in/mohammed-ikram-24832524",
+      "https://orcid.org/0000-0001-5111-9923",
+      "https://twitter.com/ikramoh"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">Mohammed <span>Ikram</span></div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#skills">Skills</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="about" aria-labelledby="about-title">
+      <div>
+        <p class="kicker">Assistant Professor · PhD in Computer Science</p>
+        <h1 id="about-title">Mohammed Abdulaziz Ikram</h1>
+        <p class="subtitle">I build and teach modern computing systems. My interests span <strong>Artificial Intelligence</strong>, <strong>Data Science</strong>, <strong>Cloud Computing</strong>, <strong>Internet of Things</strong>, and <strong>Machine Learning</strong>. I currently serve as an Assistant Professor in the <em>Computer Science Department</em> at <em>Jamoum University College</em>, Umm Al‑Qura University, Saudi Arabia.</p>
+        <div class="cta">
+          <a class="btn" href="#contact" aria-label="Contact Mohammed">Contact</a>
+          <a class="btn secondary" href="https://uqu.edu.sa/Profile/maikram" target="_blank" rel="noopener">UQU Profile</a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/mohammed-ikram-24832524" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="objective">
+      <h2>Objective</h2>
+      <div class="card">
+        <p>To contribute to the evolution of information technology by strengthening software and hardware infrastructures, whether through pioneering new technologies or by educating others on the latest global advancements and emerging trends.</p>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="grid">
+        <article class="card item">
+          <div class="role">Assistant Professor</div>
+          <div class="meta">Umm Al‑Qura University · Computer Science Department · Jamoum University College · Saudi Arabia · <span class="mono">2021—present</span></div>
+          <ul class="clean">
+            <li>Teach courses: Fundamentals of Computer Languages, Computer Architecture, Introduction to Embedded Systems, Discrete Structures, Introduction to Operating Systems, Cloud Computing.</li>
+            <li>Supervise master’s theses and undergraduate graduation projects.</li>
+            <li>Collaborate on research in AI, Data Science, Cloud Computing, IoT, and ML.</li>
+          </ul>
+        </article>
+        <article class="card item">
+          <div class="role">Vice Dean of Library Affairs for Technical and Technology</div>
+          <div class="meta">Umm Al‑Qura University · Saudi Arabia · <span class="mono">2021—2023</span></div>
+          <ul class="clean">
+            <li>Supervised projects at the General King Abdullah Library.</li>
+            <li>Managed the library website and resolved technical issues.</li>
+            <li>Administered Koha for the main library repository and oversaw subscribed databases.</li>
+          </ul>
+        </article>
+        <article class="card item">
+          <div class="role">Lecturer</div>
+          <div class="meta">Umm Al‑Qura University · Computer Science Department · Jamoum University College · Saudi Arabia · <span class="mono">2010—2020</span></div>
+          <ul class="clean">
+            <li>Taught Computer Science and General Security (Ministry of Interior, KSA).</li>
+            <li>Built software applications, Cisco networks, and VMware-based cloud projects.</li>
+            <li>Supervised master’s students during PhD at UTS.</li>
+          </ul>
+        </article>
+        <article class="card item">
+          <div class="role">Tutor</div>
+          <div class="meta">University of Technology Sydney · Australia · <span class="mono">2015—2020</span></div>
+          <ul class="clean">
+            <li>Cloud Computing &amp; SaaS (Salesforce, AWS).</li>
+            <li>Technology Research Preparation (TRP) research stream.</li>
+          </ul>
+        </article>
+        <article class="card item">
+          <div class="role">IT Services Analyst</div>
+          <div class="meta">Saudi Electricity Company · Saudi Arabia · <span class="mono">2005—2010</span></div>
+          <ul class="clean">
+            <li>Upgraded legacy terminal machines to modern PCs with data centre connectivity.</li>
+            <li>Managed and maintained Cisco networking devices (Western Region).</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="cards">
+        <div class="card item">
+          <div class="role">Ph.D. in Computer Systems</div>
+          <div class="meta">University of Technology Sydney · Faculty of Engineering &amp; IT · <span class="mono">2015—2020</span></div>
+        </div>
+        <div class="card item">
+          <div class="role">M.Sc. in Internetworking</div>
+          <div class="meta">University of Technology Sydney · Faculty of Engineering &amp; IT · <span class="mono">2013—2015</span></div>
+        </div>
+        <div class="card item">
+          <div class="role">B.Sc. in Computer Engineering</div>
+          <div class="meta">Umm Al‑Qura University · College of Engineering &amp; Islamic Architecture · <span class="mono">2000—2005</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div class="cards">
+        <div class="card"><b>Terminal Device Upgrade — SEC (Taif, KSA)</b><br>Migration of legacy IBM terminals to modern PCs with seamless integration.</div>
+        <div class="card"><b>Network Infrastructure — SEC (Main Campus, KSA)</b><br>Installed and managed network equipment ensuring stable, secure connectivity.</div>
+        <div class="card"><b>Insurance Invoice Verification — UTS</b><br>Co‑developed a system to verify consumer invoices before claim submission.</div>
+        <div class="card"><b>Conference Support &amp; Research Collaboration — UTS</b><br>Organized and supported an international conference.</div>
+        <div class="card"><b>ABET Accreditation — Jamoum Univ. College</b><br>Guided the department through ABET accreditation procedures.</div>
+        <div class="card"><b>Library Repository Evaluation — UQU</b><br>Assessed Koha platform ahead of transition from DSpace.</div>
+      </div>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <div class="cards">
+        <div class="card">Cloud Computing (UG) · Computer Architecture (UG) · Digital Logic Design (UG) · Computer Networks (UG) · Discrete Structures (UG) · Computer Theory (UG) · Advanced Computer Theory (PG) · Introduction to Computer Skills (Ministry of Interior, KSA) · Cloud Computing &amp; SaaS (Tutor, UTS) · Technology Research Preparation (Tutor, UTS) · SPSS Workshop (Saudi Students Club, Sydney)</div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="cards">
+        <div class="card">
+          <b>General</b>
+          <ul class="clean">
+            <li>Network monitoring, traffic analysis, helpdesk support.</li>
+            <li>Team enablement and technical capability development.</li>
+          </ul>
+          <b>Software</b>
+          <ul class="clean">
+            <li>Salesforce CRM development</li>
+            <li>Wireshark for traffic monitoring</li>
+            <li>Cisco Packet Tracer simulations</li>
+          </ul>
+          <b>Programming</b>
+          <div class="list-inline">
+            <span class="badge">Java</span><span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">R</span><span class="badge">PHP</span><span class="badge">JavaScript</span><span class="badge">LaTeX</span>
+          </div>
+          <b>Machine Learning</b>
+          <ul class="clean">
+            <li>Supervised &amp; unsupervised models; Python implementations.</li>
+          </ul>
+          <b>Cloud Platforms</b>
+          <div class="list-inline"><span class="badge">AWS</span><span class="badge">Microsoft Azure</span></div>
+          <b>Networking</b>
+          <ul class="clean">
+            <li>Cisco configuration, subnetting, architecture design.</li>
+          </ul>
+          <b>Operating Systems</b>
+          <div class="list-inline"><span class="badge">Windows</span><span class="badge">Linux</span><span class="badge">macOS</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certs">
+      <h2>Certifications</h2>
+      <div class="two-col">
+        <div class="pub"><b>A+ Hardware Completion Certificate</b> — Jeddah International Training Institute.</div>
+        <div class="pub"><b>Cisco CCNA &amp; ICND</b> — Canadian Creative Center, Jeddah.</div>
+        <div class="pub"><b>Fundamentals of Wireless LANs</b> — Jeddah International Training Institute.</div>
+        <div class="pub"><b>Interaction in the Workplace</b> — Saudi Electricity Company.</div>
+        <div class="pub"><b>Microsoft Azure for Research Training</b> — Microsoft Research.</div>
+        <div class="pub"><b>Motivation Training</b> — Institute of Public Administration, Riyadh.</div>
+        <div class="pub"><b>Implementing MS SQL Server 2005 Database</b> — Certified Training Program.</div>
+        <div class="pub"><b>Self‑Management Training</b> — Institute of Public Administration, Riyadh.</div>
+        <div class="pub"><b>Conflict Management in the Workplace</b> — Institute of Public Administration.</div>
+        <div class="pub"><b>Creative Thinking Workshop</b> — Institute of Public Administration.</div>
+        <div class="pub"><b>CCNA R&amp;S: Introduction to Networks</b> — Cisco Networking Academy.</div>
+        <div class="pub"><b>CCNA R&amp;S: Routing &amp; Switching Essentials</b> — Cisco Networking Academy.</div>
+        <div class="pub"><b>InDesign Quick Start (2015)</b> — LinkedIn Learning.</div>
+        <div class="pub"><b>Managing Multiple Projects</b> — LinkedIn Learning.</div>
+        <div class="pub"><b>Tech Ethics: Avoiding Unintended Consequences</b> — LinkedIn Learning.</div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="two-col">
+        <div class="pub">Tarik Alafif, Mohammad Jassas, Alaa E. AbdelHakim, Ghada Alfattni, Hassan Althobaiti, <b>Mohammed Ikram</b>, Amirah Alharbi, Hussam Alsharif, Mazin Alshamrani, Ebtisam Alharbi, Tahani Alsubait, Abdullah Alhawsawi, Badr Alsolami, Khalid Khayyat: <b>Towards an Integrated Intelligent Framework for Crowd Control and Management (IICCM)</b>. <i>IEEE Access</i>.</div>
+        <div class="pub">Ghaidaa Hamed Alharbi, <b>Mohammed Abdulaziz Ikram</b>: <b>An Obesity Risk Level (ORL) Based on Combination of K‑Means and XGBoost Algorithms to Predict Childhood Obesity</b>. <i>International Journal of Advanced Computer Science &amp; Applications</i>.</div>
+        <div class="pub">Qusay M. Salih, Md Arafatur Rahman, A. Taufiq Asyhari, Muhammad Kamran Naeem, Mohammad Patwary, Ryan Alturki, <b>Mohammed Abdulaziz Ikram</b>: <b>Dynamic channel estimation‑aware routing protocol in mobile cognitive radio networks for smart IIoT applications</b>. <i>Digital Communications and Networks</i>.</div>
+        <div class="pub">Bo Jin, Fazlullah Khan, Ryan Alturki, <b>Mohammed Abdulaziz Ikram</b>: <b>Computational intelligence‑enabled prediction and communication mechanism for IoT‑based autonomous systems</b>. <i>ISA Transactions</i>.</div>
+        <div class="pub">Bo Jin, Fazlullah Khan, Ryan Alturki, <b>Mohammed Abdulaziz Ikram</b>: <b>A reliable wireless communication mechanism and decision support system for IoT networks</b>. <i>Soft Computing</i>.</div>
+        <div class="pub"><b>Mohammed Abdulaziz Ikram</b>, Ryan Alturki, Farookh K. Hussain: <b>Towards Linguistic‑based Evaluation System of Cloud SaaS Provider</b>. <i>IJACSA</i>.</div>
+        <div class="pub">Ryan Alturki, Hasan J. Alyamani, <b>Mohammed Abdulaziz Ikram</b>, Md Arafatur Rahman, Mohammad Dahman Alshehri, Fazlullah Khan, Muhammad Haleem: <b>Sensor‑Cloud Architecture: A Taxonomy of Security Issues in Cloud‑Assisted Sensor Networks</b>. <i>IEEE Access</i> (2021).</div>
+        <div class="pub">Yinjun Zhang, Ryan Alturki, Hasan J. Alyamani, <b>Mohammed Abdulaziz Ikram</b>, Ateeq Ur Rehman, Muhammad Haleem: <b>Multilabel CNN‑Based Hybrid Learning Metric for Pedestrian Re‑identification</b>. <i>Mobile Information Systems</i> (2021).</div>
+        <div class="pub">Inam Ullah Khan, Ryan Alturk, Hasan J. Alyamani, <b>Mohammed Abdulaziz Ikram</b>, Muhammad Adnan Aziz, Vinh Truong Hoang, Tanweer Ahmad Cheema: <b>RSSI‑Controlled Long‑Range Communication in Secured IoT‑Enabled UAVs</b>. <i>Mobile Information Systems</i> (2021).</div>
+        <div class="pub"><b>Mohammed Abdulaziz Ikram</b>, Nabin Sharma, Muhammad Raza, Farookh K. Hussain: <b>Dynamic Ranking System of Cloud SaaS Based on Consumer Preferences — Find SaaS M2NFCP</b>. <i>AINA 2019</i>.</div>
+        <div class="pub"><b>Mohammed Abdulaziz Ikram</b>, Farookh K. Hussain: <b>Software as a Service (SaaS) Service Selection Based on Measuring the Shortest Distance to the Consumer's Preferences</b>. <i>EIDWT 2018</i>.</div>
+        <div class="pub"><b>Mohammed Abdulaziz Ikram</b>, Mohammad Dahman Alshehri, Farookh K. Hussain: <b>Architecture of an IoT‑based system for football supervision (IoT Football)</b>. <i>WF‑IoT 2015</i>.</div>
+      </div>
+    </section>
+
+    <section id="languages">
+      <h2>Languages</h2>
+      <div class="cards">
+        <div class="card"><b>Arabic</b>: Mother tongue</div>
+        <div class="card"><b>English</b>: Advanced</div>
+      </div>
+    </section>
+
+    <section id="interests">
+      <h2>Interests</h2>
+      <div class="cards">
+        <div class="card">Reading · Teaching · Writing · Organizing · Solving Problems · Open Source Software · Data Science · Software Engineering · Cloud Services</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="cards">
+        <div class="card contact">
+          <div><b>Email:</b> <a href="mailto:maikram@uqu.edu.sa">maikram@uqu.edu.sa</a></div>
+          <div><b>Phone:</b> <a href="tel:+966561052166">+966 56 105 2166</a></div>
+          <div><b>Address:</b> MDSA6710, 6710, Mohammed Bin Jobire Street, Al Shawqiea district, 2443, Makkah 24351, Saudi Arabia</div>
+          <div class="list-inline">
+            <a class="badge" href="https://uqu.edu.sa/Profile/maikram" target="_blank" rel="noopener">UQU Profile</a>
+            <a class="badge" href="https://www.linkedin.com/in/mohammed-ikram-24832524" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="badge" href="https://twitter.com/ikramoh" target="_blank" rel="noopener" aria-label="Twitter">Twitter</a>
+            <a class="badge" href="https://orcid.org/0000-0001-5111-9923" target="_blank" rel="noopener">ORCID</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container small">© <span id="y"></span> Mohammed Abdulaziz Ikram. Built for GitHub Pages. <span class="mono">index.html</span></div>
+  </footer>
+
+  <script>
+    // set year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Smooth-scroll focus handling for accessibility
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // move focus after the scroll
+        setTimeout(() => {
+          el.setAttribute('tabindex', '-1');
+          el.focus({ preventScroll: true });
+        }, 300);
+      });
+    });
+  </script>
+</body>
+</html>
